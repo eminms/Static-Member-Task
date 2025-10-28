@@ -8,9 +8,11 @@ namespace ConsoleApp2
         public int Score { get; set; }
         public int PlayerId { get; set; }
         public static int TotalPlayers = 0;
-        public static int HigestScore = 0;
+        public static int HighestScore = 0;
         public static int NextId = 1;
+
         public static GamePlayer[] players = new GamePlayer[0];
+
         public GamePlayer(string playerName, int score)
         {
             PlayerName = playerName;
@@ -19,7 +21,7 @@ namespace ConsoleApp2
             Array.Resize(ref players, players.Length + 1);
             players[players.Length - 1] = this;
             TotalPlayers++;
-            if (score > HigestScore)
+            if (score > HighestScore)
             {
                 HigestScore = score;
             }
@@ -33,7 +35,7 @@ namespace ConsoleApp2
                     HigestScore = player.Score;
             }
         }
-        public static void RemovePlayer()
+        public static void RemovePlayer(GamePlayer player p)
         {
             if (TotalPlayers == 0) return;
             Array.Resize(ref players, players.Length - 1);

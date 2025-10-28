@@ -28,7 +28,16 @@
                         int id = int.Parse(Console.ReadLine());
                         Console.Write("Enter New Score: ");
                         int newScore = int.Parse(Console.ReadLine());
-                        var player = Array.Find(GamePlayer.players, p => p.PlayerId == id);
+                        GamePlayer player = null;
+
+                        foreach (var p in GamePlayer.players)
+                        {
+                            if (p != null && p.PlayerId == id)
+                            {
+                                player = p;
+                                break; 
+                            }
+                        }
                         if (player != null)
                         {
                             player.UpdateScore(newScore);
